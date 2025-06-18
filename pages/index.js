@@ -13,10 +13,10 @@ const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
-const addTodoPopup = new PopupWithForm({ 
-  popupSelector: "#add-todo-popup", 
+const addTodoPopup = new PopupWithForm({
+  popupSelector: "#add-todo-popup",
   handleFormSubmit: () => {},
- });
+});
 
 const generateTodo = (data) => {
   const todo = new Todo(data, "#todo-template");
@@ -36,16 +36,12 @@ const section = new Section({
 
 section.renderItems();
 
-const openModal = (modal) => {
-  modal.classList.add("popup_visible");
-};
-
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
 };
 
 addTodoButton.addEventListener("click", () => {
-  openModal(addTodoPopupEl);
+  addTodoPopup.open();
 });
 
 addTodoCloseBtn.addEventListener("click", () => {
