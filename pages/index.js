@@ -38,10 +38,6 @@ const section = new Section({
 
 section.renderItems();
 
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
-
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
 });
