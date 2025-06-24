@@ -6,34 +6,29 @@ class Popup {
 
   _handleEscapeClose(evt) {
     if (evt.key === "Escape") {
-      // todo: call the close method
+      this.close();
     }
   }
 
   open() {
     this._popupElement.classList.add("popup_visible");
-    document.addEventListener("keyup", this._handleEscapeClose)
+    document.addEventListener("keyup", this._handleEscapeClose);
   }
 
   close() {
-    // this._popupElement.classList.remove("popup_visible");
-    console.log("close button")
-    // remove the escape listener
+    this._popupElement.classList.remove("popup_visible");
+    document.removeEventListener("keyup", this._handleEscapeClose);
   }
 
   setEventListeners() {
-
-    // this one listener will handle the close button and modal listener
     this._popupElement.addEventListener("mousedown", (evt) => {
-     // if the event target's classlist contains "popup__close" or "popup"
-     // then close the modal
-    //  if (x || y) {
-
-    //  }
+      if (
+        evt.target.classList.contains("popup__close") ||
+        evt.target.classList.contains("popup")
+      ) {
+        this.close();
+      }
     });
   }
-
-
-
 }
 export default Popup;

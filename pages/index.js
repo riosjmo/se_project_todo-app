@@ -15,7 +15,23 @@ const todosList = document.querySelector(".todos__list");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: () => {},
+  handleFormSubmit: (inputValues) => {
+    const name = inputValues.name;
+    const dateInput = inputValues.date;
+
+    const date = new Date(dateInput);
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+
+    const id = uuidv4();
+
+    const values = { name, date, id };
+    renderTodo(values);
+    addTodoForm.reset();
+
+    newTodoValidator.resetValidation();
+
+    addTodoPopup.close();
+  },
 });
 
 addTodoPopup.setEventListeners();
@@ -41,10 +57,6 @@ section.renderItems();
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
 });
-
-// addTodoCloseBtn.addEventListener("click", () => {
-//   addTodoPopup.close();
-// });
 
 // addTodoForm.addEventListener("submit", (evt) => {
 //   evt.preventDefault();
