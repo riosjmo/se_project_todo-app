@@ -42,7 +42,7 @@ const addTodoPopup = new PopupWithForm({
     renderTodo(values);
 
     todoCounter.updateTotal(true);
-    
+
     addTodoForm.reset();
 
     newTodoValidator.resetValidation();
@@ -72,6 +72,8 @@ const section = new Section({
 section.renderItems();
 
 addTodoButton.addEventListener("click", () => {
+  addTodoForm.reset();
+  newTodoValidator.resetValidation();
   addTodoPopup.open();
 });
 
